@@ -1,3 +1,4 @@
+# Base image
 FROM mysql:5.7.40-debian
 
 # Add default mysql env
