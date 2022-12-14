@@ -15,8 +15,8 @@ CREATE TABLE `mqtt_user` (
   `listener` varchar(35) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mqtt_username` (`username`),
-  INDEX (username, mountpoint),
-  INDEX (group_, mountpoint)
+  INDEX (username, listener),
+  INDEX (group_, listener)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `mqtt_acl` (
@@ -30,8 +30,8 @@ CREATE TABLE `mqtt_acl` (
   `group_` varchar(35) DEFAULT NULL,
   `listener` varchar(35) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX (ipaddr, mountpoint),
-  INDEX (username, mountpoint),
-  INDEX (clientid, mountpoint),
-  INDEX (group_, mountpoint)
+  INDEX (ipaddr, listener),
+  INDEX (username, listener),
+  INDEX (clientid, listener),
+  INDEX (group_, listener)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
