@@ -14,10 +14,11 @@ CREATE TABLE `mqtt_user` (
   `group_` varchar(35) DEFAULT NULL,
   `listener` varchar(35) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `mqtt_username` (`username`),
-  INDEX (username, listener),
-  INDEX (group_, listener)
+  UNIQUE KEY `mqtt_username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE INDEX mqtt_user_username_idx ON mqtt_user(username, listener);
+CREATE INDEX mqtt_user_group_idx ON mqtt_user(group_, listener);
 
 CREATE TABLE `mqtt_acl` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -29,9 +30,10 @@ CREATE TABLE `mqtt_acl` (
   `topic` varchar(100) NOT NULL DEFAULT '' COMMENT 'Topic Filter',
   `group_` varchar(35) DEFAULT NULL,
   `listener` varchar(35) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX (ipaddr, listener),
-  INDEX (username, listener),
-  INDEX (clientid, listener),
-  INDEX (group_, listener)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE INDEX mqtt_acl_ipaddr_idx ON mqtt_acl(ipaddr, listener);
+CREATE INDEX mqtt_acl_username_idx ON mqtt_acl(username, listener);
+CREATE INDEX mqtt_acl_clientid_idx ON mqtt_acl(clientid, listener);
+CREATE INDEX mqtt_acl_group_idx ON mqtt_acl(group_, listener);
