@@ -11,8 +11,12 @@ CREATE TABLE `mqtt_user` (
   `password` varchar(100) DEFAULT NULL,
   `salt` varchar(35) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
+  `group_` varchar(35) DEFAULT NULL,
+  `listener` varchar(35) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `mqtt_username` (`username`)
+  UNIQUE KEY `mqtt_username` (`username`),
+  INDEX (username, mountpoint),
+  INDEX (group_, mountpoint)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `mqtt_acl` (
@@ -23,8 +27,11 @@ CREATE TABLE `mqtt_acl` (
   `clientid` varchar(100) DEFAULT NULL COMMENT 'ClientId',
   `access` int(2) NOT NULL COMMENT '1: subscribe, 2: publish, 3: pubsub',
   `topic` varchar(100) NOT NULL DEFAULT '' COMMENT 'Topic Filter',
+  `group_` varchar(35) DEFAULT NULL,
+  `listener` varchar(35) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX (ipaddr),
-  INDEX (username),
-  INDEX (clientid)
+  INDEX (ipaddr, mountpoint),
+  INDEX (username, mountpoint),
+  INDEX (clientid, mountpoint),
+  INDEX (group_, mountpoint)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
