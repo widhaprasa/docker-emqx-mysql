@@ -4,8 +4,8 @@ GRANT ALL PRIVILEGES ON emqx_mysql.* TO 'emqx_mysql'@'%';
 -- Use database
 USE emqx_mysql;
 
--- Create default table
-CREATE TABLE `mqtt_user_5` (
+-- Create default tablex
+CREATE TABLE `mqtt_user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `peerhost` varchar(60) DEFAULT NULL,
   `clientid` varchar(100) DEFAULT NULL,
@@ -22,12 +22,12 @@ CREATE TABLE `mqtt_user_5` (
   UNIQUE KEY `mqtt_username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE INDEX mqtt_user_5_peerhost_idx ON mqtt_user(peerhost, listener);
-CREATE INDEX mqtt_user_5_clientid_idx ON mqtt_user(clientid, listener);
-CREATE INDEX mqtt_user_5_username_idx ON mqtt_user(username, listener);
-CREATE INDEX mqtt_user_5_group_idx ON mqtt_user(group_, listener);
+CREATE INDEX mqtt_user_peerhost_idx ON mqtt_user(peerhost, listener);
+CREATE INDEX mqtt_user_clientid_idx ON mqtt_user(clientid, listener);
+CREATE INDEX mqtt_user_username_idx ON mqtt_user(username, listener);
+CREATE INDEX mqtt_user_group_idx ON mqtt_user(group_, listener);
 
-CREATE TABLE `mqtt_acl_5` (
+CREATE TABLE `mqtt_acl` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `peerhost` varchar(60) DEFAULT NULL,
   `clientid` varchar(100) DEFAULT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `mqtt_acl_5` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE INDEX mqtt_acl_5_peerhost_idx ON mqtt_acl(peerhost, listener);
-CREATE INDEX mqtt_acl_5_clientid_idx ON mqtt_acl(clientid, listener);
-CREATE INDEX mqtt_acl_5_username_idx ON mqtt_acl(username, listener);
-CREATE INDEX mqtt_acl_5_group_idx ON mqtt_acl(group_, listener);
+CREATE INDEX mqtt_acl_peerhost_idx ON mqtt_acl(peerhost, listener);
+CREATE INDEX mqtt_acl_clientid_idx ON mqtt_acl(clientid, listener);
+CREATE INDEX mqtt_acl_username_idx ON mqtt_acl(username, listener);
+CREATE INDEX mqtt_acl_group_idx ON mqtt_acl(group_, listener);
