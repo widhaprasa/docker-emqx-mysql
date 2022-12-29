@@ -14,7 +14,7 @@ CREATE TABLE `mqtt_user` (
   `cert_common_name` varchar(100) DEFAULT NULL,
   `password_hash` varchar(100) DEFAULT NULL,
   `salt` varchar(35) DEFAULT NULL,
-  `is_superuser` tinyint(1) DEFAULT 0,
+  `is_superuser` tinyint DEFAULT 0,
   `created` datetime DEFAULT NULL,
   `group_` varchar(35) DEFAULT NULL,
   `listener` varchar(35) DEFAULT NULL,
